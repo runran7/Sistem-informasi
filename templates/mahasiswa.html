@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block _content %}
+<style>
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+    }
+    th, td {
+        padding: 5px;
+
+
+    }
+
+    th {
+        background-color: yellow;
+    }
+</style>
+<h1>Ini adalah halaman mahasiwa</h1>
+<a href="/mahasiswa/tambah">Tambah Data Mahasiswa</a> 
+
+<table border="1">
+    <tr>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>Nim</th>
+        <th>Jurusan</th>
+        <th>Aksi</th>
+    </tr>
+    {% for m in data %}
+    <tr>
+        <td>{{ m["nama"] }}</td>
+        <td>{{ m["email"] }}</td>
+        <td>{{ m["nim"] }}</td>
+        <td>{{ m.jurusan }}</td>
+        <td>
+            <a href="/mahasiswa/ubah/{{ m.id }}">Ubah</a>
+            <a href="/mahasiswa/lihat/{{ m.id }}">Lihat</a>
+            <a href="/mahasiswa/hapus/{{ m.id }}">Hapus</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
